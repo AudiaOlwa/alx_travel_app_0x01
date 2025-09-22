@@ -1,4 +1,6 @@
+# alx_travel_app_0x00
 # Seed & run
+Django Travel App project with MySQL, DRF, Swagger, and CORS.
 
 1. Installer dépendances:
    pip install -r requirements.txt
