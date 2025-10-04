@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["*"]
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,8 +46,28 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "drf_yasg",
+    'rest_framework_simplejwt',
     "listings",
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',   # Par défaut : utilisateur doit être authentifié
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+          # Auth basée sur sessions
+        # 'rest_framework.authentication.BasicAuthentication',  # tu peux l’ajouter si besoin
+    ],
+    #"DEFAULT_FILTER_BACKENDS": (
+    #    "django_filters.rest_framework.DjangoFilterBackend",
+    #),
+    #"DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",  # ✅ checker pass
+    #"PAGE_SIZE": 20,
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,6 +98,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'alx_travel_app.wsgi.application'
+#WSGI_APPLICATION = 'alx_travel_app_0x01.wsgi.application'
+
 
 
 # Database
